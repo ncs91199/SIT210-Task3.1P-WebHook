@@ -1,0 +1,17 @@
+int led = D7;  // The on-board LED
+
+void setup() {
+  pinMode(led, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(led, HIGH);   // Turn ON the LED
+
+  String val;
+  val = analogRead(0); //moisture sensor is connected to A0
+  Particle.publish("soil", val, PRIVATE);
+  delay(30000);               // keep it on for 30 seconds
+
+  digitalWrite(led, LOW);    // Turn OFF the LED
+  delay(30000);               // keep it off for 30 seconds
+}
